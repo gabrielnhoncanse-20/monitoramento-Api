@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/sensores")
+@CrossOrigin(origins = "*")
 public class SensorController {
 
     private final SensorService service;
