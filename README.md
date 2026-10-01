@@ -34,11 +34,13 @@ Este sistema monitora indicadores de operação em tempo real, como:
 - GET /medicoes
 - GET /sensores
 - POST /medicoes
-- POST /medicoes/simular (quando suportado pelo backend)
+- POST /medicoes/simular
+
+As medições são salvas pelo H2 no arquivo `data/sensordb.mv.db`, dentro da pasta do projeto. O arquivo é criado automaticamente e os registros continuam disponíveis após reiniciar o backend.
 
 ## O que o botão de simular faz
 
-Ao pressionar o botão de gerar nova medição, o app envia uma requisição para a API para criar ou simular uma nova coleta. Em seguida, o app recarrega a lista de medições para mostrar o valor atualizado e o status final.
+Ao pressionar o botão de gerar nova medição, o app deve enviar `POST /medicoes/simular`. O backend grava a medição no banco e retorna o registro criado. Em seguida, o app deve chamar `GET /medicoes` para recarregar a lista e mostrar os dados atuais do backend.
 
 ## O que a tela mostra se o backend estiver parado
 
